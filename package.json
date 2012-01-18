@@ -1,0 +1,12 @@
+{ "name": "rand48",
+  "version": "0.1.0",
+  "author": "Robert Schultz <robert@cosmicrealms.com>",
+  "description": "Provides a seedable uniformly distributed random number generator for node.js, based on POSIX nrand48_r function",
+  "scripts": { "preinstall": "node-waf configure build" },
+  "main": "build/default/rand48.node",
+  "engines": { "node": ">0.3.0" },
+  "keywords": [ ],
+  "homepage" : "http://github.com/Sembiance/node-rand48",
+  "licenses": [ { "type": "MIT", "url": "http://github.com/Sembiance/node-rand48/raw/master/LICENSE" } ],
+  "repository": { "type": "git", "url": "http://github.com/Sembiance/node-rand48.git" }
+}
