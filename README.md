@@ -9,7 +9,7 @@ NOTE: Only tested under Linux
 Installation with NPM
 =====================
 
-npm install rand48
+	npm install rand48
 
 
 Usage
