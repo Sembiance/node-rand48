@@ -1,5 +1,5 @@
-//var Rand48 = require("rand48").Rand48;
-var Rand48 = require("./build/default/rand48").Rand48;
+var Rand48 = require("rand48").Rand48;
+//var Rand48 = require("./build/default/rand48").Rand48;
 
 var r = new Rand48();   		// Creates a new Rand48 object, with no seed
 console.log(r.rand(1, 10));     // Requests a number between 1 and 10 inclusive
