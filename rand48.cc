@@ -116,9 +116,12 @@ class Rand48 : public ObjectWrap
 			if(!args[0]->IsInt32() || !args[1]->IsInt32())
 			{
 				char buf[1024];
-				sprintf(buf, "rand(min, max) arguments must be betwee 0 and %d", NRAND48_MAX);
+				sprintf(buf, "rand(min, max) arguments must be between 0 and %d", NRAND48_MAX);
 				return ThrowException(Exception::TypeError(String::New(buf)));
 			}
+
+			if(args[1]->Int32Value()<args[0]->Int32Value())
+				return ThrowException(Exception::TypeError(String::New("rand(min, max) min MUST be greather than or equal to max")));
 
 			Rand48* rand48 = ObjectWrap::Unwrap<Rand48>(args.This());
 			return scope.Close(Int32::New(rand48->rand(args[0]->Int32Value(), args[1]->Int32Value())));
