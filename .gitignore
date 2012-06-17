@@ -2,3 +2,4 @@
 .project
 .lock-wscript
 build
+node_modules
