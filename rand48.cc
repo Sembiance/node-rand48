@@ -136,41 +136,6 @@ extern "C" void init(Handle<Object> target)
 	Rand48::Initialize(target);
 }
 
-//https://www.cloudkick.com/blog/2010/aug/23/writing-nodejs-native-extensions/
-
-/*
- void seed_rand(int thread_n, struct drand48_data *buffer)
- {
- struct timeval tv;
-
- gettimeofday(&tv, NULL);
- srand48_r(tv.tv_sec * thread_n + tv.tv_usec, buffer);
- }
-
- void *threadFunc(void *arg)
- {
- struct thread_info *thread_info = arg;
- struct drand48_data drand_buffer;
-
- int n = 0;
- const int rays = thread_info->rays;
- int hits_in = 0;
- double x;
- double y;
- double r;
-
- seed_rand(thread_info->thread_n, &drand_buffer);
-
- for (n = 0; n < rays; n++)
- {
- drand48_r(&drand_buffer, &x);
- drand48_r(&drand_buffer, &y);
- r = x * x + y * y;
- if (r < 1.0){
- hits_in++;
- }
- }
-
- thread_info->hits_in = hits_in;
- return NULL;
- }*/
+#ifdef NODE_MODULE
+    NODE_MODULE(rand48, init)
+#endif
