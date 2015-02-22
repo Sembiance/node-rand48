@@ -89,7 +89,7 @@ class Rand48 : public ObjectWrap
 
 				for(;i<3;i++)
 				{
-					xsubi[i] = (unsigned short int)(xsubi[i-1]*7);
+					xsubi[i] = (unsigned short int)0;
 				}
 			}
 			else
