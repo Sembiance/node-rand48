@@ -1,13 +1,13 @@
 {
 	"name": "rand48",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"author": "Robert Schultz <robert@cosmicrealms.com>",
 	"description": "Provides a seedable uniformly distributed random number generator for node.js, based on POSIX nrand48_r function",
 	"main": "index.js",
 	"dependencies":
 	{
   		"bindings": "= 1.2.1",
-    	"nan": "= 1.8.4"
+    	"nan": "= 1.9.0"
   	},
   	"engines":
   	{
