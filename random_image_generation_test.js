@@ -1,27 +1,25 @@
-if(!Math.randomInt)
-{
-	Math.randomInt = function(min, max)
-	{
-		return Math.floor(Math.random() * (max - min + 1)) + min;  
-	};
-}
+"use strict";
 
-var Rand48 = require("./build/default/rand48").Rand48;
-var fs = require("fs");
-var width = 1000;
-var height = 1000;
-var pixelCount = (width*height);
-var maxWhiteVal = 10;
+if(!Math.randomInt)
+	Math.randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+const Rand48 = require("./build/default/rand48").Rand48;
+const fs = require("fs");
+const width = 1000;
+const height = 1000;
+const pixelCount = (width*height);
+const maxWhiteVal = 10;
 
 function generateVals(algo)
 {
-	var r = new Rand48();
-	var vals = [];
-	for(var i=0;i<pixelCount;i++) { vals.push(0); }
+	const r = new Rand48();
+	const vals = [];
+	for(let i=0;i<pixelCount;i++)
+		vals.push(0);
 	
-	for(var i=0;i<1000000;i++)
+	for(let i=0;i<1000000;i++)
 	{
-		var num = algo==="rand48" ? r.rand(0, pixelCount) : Math.randomInt(0, pixelCount);
+		const num = algo==="rand48" ? r.rand(0, pixelCount) : Math.randomInt(0, pixelCount);
 		vals[num]++;
 		vals[num] = Math.min(vals[num], maxWhiteVal);
 	}
@@ -31,14 +29,14 @@ function generateVals(algo)
 
 function writeValsToFile(filename, vals)
 {
-	var data = "P2\n";
+	let data = "P2\n";
 	data += "# random test\n";
 	data += width + " " + height + "\n";
 	data += maxWhiteVal + "\n";
-	for(var y=0;y<height;y++)
+	for(let y=0;y<height;y++)
 	{
-		var line = "";
-		for(var x=0;x<width;x++)
+		let line = "";
+		for(let x=0;x<width;x++)
 		{
 			if(x>0)
 				line += " ";
@@ -52,12 +50,8 @@ function writeValsToFile(filename, vals)
 	fs.writeFileSync(filename, data);
 }
 
-for(var i=0;i<5;i++)
-{
+for(let i=0;i<5;i++)
 	writeValsToFile("rand48-" + i + ".pbm", generateVals("rand48"));
-}
 
-for(var i=0;i<10;i++)
-{
+for(let i=0;i<10;i++)
 	writeValsToFile("Math.random-" + i + ".pbm", generateVals());
-}
