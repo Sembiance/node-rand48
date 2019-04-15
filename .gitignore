@@ -5,3 +5,4 @@ build
 node_modules
 rand48.sublime-project
 rand48.sublime-workspace
+pnpm-lock.yaml
